@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Container from "./Container";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [visible, setVisible] = useState(true);
@@ -58,7 +59,7 @@ export default function Header() {
         <div className="relative grid grid-cols-[auto_1fr_auto] items-center py-6">
           {/* Logo */}
           <Link href="/#hero" className="justify-self-start cursor-pointer">
-            <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+            <Image src="/logo.png" alt="Logo" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop menu */}

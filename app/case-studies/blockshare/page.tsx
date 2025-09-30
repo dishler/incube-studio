@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 /* ===================== Секції для меню ===================== */
 const sections = [
@@ -215,7 +216,7 @@ export default function BlockshareCaseStudy() {
                 <ul className="space-y-2">
                   {sections.map(s => (
                     <li key={s.id}>
-                      <a
+                      <Link
                         href={`#${s.id}`}
                         id={`menu-${s.id}`}
                         className={`flex justify-between items-center ml-[20px] mr-[40px] text-[16px] transition-colors ${
@@ -224,17 +225,17 @@ export default function BlockshareCaseStudy() {
                       >
                         {s.label}
                         {active === s.id && <span>✓</span>}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-6 px-[20px]">
-                  <a
+                  <Link
                     href="#get-in-touch"
                     className="block w-full text-center bg-black text-white rounded-full py-3 px-6 text-[16px] font-medium hover:scale-105 transition"
                   >
                     Get in touch
-                  </a>
+                  </Link>
                 </div>
               </div>
             </aside>
@@ -258,16 +259,16 @@ function Hero() {
       className="bg-white px-4 sm:px-8 lg:px-[120px] pt-0 pb-16 sm:pb-24 lg:pb-32 scroll-mt-[120px] border-t border-white"
     >
       <nav className="text-neutral-500 text-[13px] sm:text-[14px] mb-6 sm:mb-8 tracking-wide mt-[96px] sm:mt-[110px] lg:mt-[120px]">
-        <a href="/" className="hover:text-black transition-colors">Home</a>
+        <Link href="/" className="hover:text-black transition-colors">Home</Link>
         <span className="mx-2 text-neutral-400">/</span>
-        <a href="/portfolio" className="hover:text-black transition-colors">Portfolio</a>
+        <Link href="/portfolio" className="hover:text-black transition-colors">Portfolio</Link>
         <span className="mx-2 text-neutral-400">/</span>
         <span className="text-black font-medium">Blockshare</span>
       </nav>
 
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div>
-          <img
+          <Image
             src="/projects/blockshare/blockshare-logo.png"
             alt="Blockshare Logo"
             className="w-28 sm:w-32 lg:w-40 h-auto mb-6 sm:mb-8"
@@ -285,7 +286,7 @@ function Hero() {
           </div>
         </div>
         <div>
-          <img
+          <Image
             src="/projects/blockshare/blockshare-hero.png"
             alt="Blockshare App Preview"
             className="w-full h-auto object-contain rounded-lg"
@@ -466,25 +467,25 @@ function Footer() {
           </div>
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white transition">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white transition">
               info@incube.studio
-            </a>
+            </Link>
           </div>
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contacts</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contacts</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>

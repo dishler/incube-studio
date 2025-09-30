@@ -1,12 +1,14 @@
 'use client';
 
+import Link from "next/link";
+
 /* ===================== Footer ===================== */
 function Footer() {
   return (
     <footer className="border-t border-neutral-200 bg-black text-white py-12 sm:py-16">
       <div className="px-4 sm:px-8 lg:px-[120px]">
         <p className="mb-8 sm:mb-12 text-neutral-400 max-w-3xl text-[15px] sm:text-[16px]">
-          Whether you want to make a new project or talk about high performance engineering, we're ready to talk!
+          Whether you want to make a new project or talk about high-performance engineering, we`re ready to talk!
         </p>
 
         <div className="grid gap-8 sm:gap-12 sm:grid-cols-2 md:grid-cols-4">
@@ -23,22 +25,22 @@ function Footer() {
           {/* Email */}
           <div>
             <h4 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Email</h4>
-            <a
+            <Link
               href="mailto:info@incube.studio"
               className="text-neutral-400 hover:text-white transition-colors"
             >
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           {/* Main Menu */}
           <div>
             <h4 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white transition-colors">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white transition-colors">Contact Us</a></li>
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -47,34 +49,34 @@ function Footer() {
             <h4 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
               <li>
-                <a
+                <Link
                   href="https://clutch.co"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   Clutch
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://upwork.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   Upwork
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   LinkedIn
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

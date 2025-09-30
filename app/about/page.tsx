@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Container from "../components/Container";
 import { useEffect, useState, type CSSProperties } from "react";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -179,7 +180,7 @@ function Founders() {
                           hover:scale-[1.02]`}
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <img
+              <Image
                 src={f.image}
                 alt={f.name}
                 className="w-full h-auto object-cover rounded-lg
@@ -314,27 +315,27 @@ function Footer() {
 
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white transition">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white transition">
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contacts</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contacts</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>

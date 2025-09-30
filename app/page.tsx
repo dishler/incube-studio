@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Container from "./components/Container";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -43,14 +44,14 @@ function Hero() {
           {/* Права колонка */}
           <div className="flex flex-col items-start md:items-start">
             <div className="flex items-baseline">
-              <a
+              <Link
                 href="#get-in-touch"
                 className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-10 py-4 
                            text-black text-[16px] font-medium transition hover:bg-black hover:text-white cursor-pointer"
               >
                 Start Your Project
                 <span className="text-lg">→</span>
-              </a>
+              </Link>
             </div>
 
             <p className="mt-10 text-[16px] font-normal text-neutral-600 max-w-md leading-relaxed">
@@ -127,7 +128,7 @@ function Team() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Ліва колонка — картинка */}
           <div className="overflow-hidden rounded-lg">
-            <img
+            <Image
               src="/team.png"
               alt="The Team"
               className="w-full h-auto rounded-lg object-cover transition-transform duration-500 hover:scale-105"
@@ -151,18 +152,18 @@ function Team() {
             </p>
 
             <div className="pl-0 sm:pl-8">
-              <a
+              <Link
                 href="#founders"
                 className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-6 py-3 
                            text-[16px] font-medium text-black transition hover:scale-105 cursor-pointer group"
               >
                 Explore more
-                <img
+                <Image
                   src="/arrow-down-right.svg"
                   alt="Arrow Down"
                   className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -212,7 +213,7 @@ function Projects() {
               className="grid md:grid-cols-2 gap-8 items-center bg-[#F4F5F5] rounded-xl p-4 sm:p-6 md:p-10"
             >
               <Link href={p.link} className="block p-0 md:p-10">
-                <img
+                <Image
                   src={p.image}
                   alt={p.title}
                   className="w-full h-auto rounded-lg object-cover hover:scale-[1.01] transition"
@@ -236,7 +237,7 @@ function Projects() {
                     href={p.link}
                     className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-6 py-3 text-[16px] font-medium text-black transition hover:scale-105 cursor-pointer"
                   >
-                    <img src="/logo.png" alt="InCube Logo" className="w-5 h-5 object-contain" />
+                    <Image src="/logo.png" alt="InCube Logo" className="w-5 h-5 object-contain" />
                     Case Study
                   </Link>
                 </div>
@@ -289,7 +290,7 @@ function Founders() {
                           hover:scale-[1.02]`}
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <img
+              <Image
                 src={f.image}
                 alt={f.name}
                 className="w-full h-auto object-cover rounded-lg
@@ -389,13 +390,13 @@ function FAQ() {
               performance engineering, we’re ready to talk!
             </p>
 
-            <a
+            <Link
               href="#contact"
               className="mt-6 inline-flex items-center justify-center rounded-full border border-black text-[16px] font-medium text-black hover:scale-105 transition cursor-pointer"
               style={{ padding: "14px 24px", width: "auto" }}
             >
               Contact us <span className="ml-2">↘</span>
-            </a>
+            </Link>
           </div>
         </div>
       </Container>
@@ -502,7 +503,7 @@ function Footer() {
     <footer className="border-t border-neutral-200 bg-black text-white pt-[80px] pb-[80px]">
       <Container>
         <p className="mb-12 text-neutral-400">
-          Whether you want to make a new project or talk about high performance engineering, we're ready to talk!
+          Whether you want to make a new project or talk about high performance engineering, we`re ready to talk!
         </p>
 
         <div className="grid md:grid-cols-4 gap-12">
@@ -515,27 +516,27 @@ function Footer() {
 
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contact Us</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>

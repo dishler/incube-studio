@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Container from "../../components/Container"; // ← змінюй шлях за потреби
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 /* ===================== What We Build (FAQ-style) ===================== */
 function WhatWeBuild() {
@@ -141,11 +142,11 @@ function Works() {
                 <h3 className="text-[20px] font-semibold mb-3">{work.title}</h3>
                 <p className="text-[16px] text-neutral-700 mb-6 leading-relaxed">{work.desc}</p>
                 <div className="mt-auto">
-                  <a
+                  <Link
                     href={work.href}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-black text-[16px] font-medium text-black cursor-pointer h-[48px] px-[20px] transition-transform duration-300 hover:scale-105"
                   >
-                    <img
+                    <Image
                       src="/web-development/incube-logo.svg"
                       alt="Incube Logo"
                       width={20}
@@ -153,7 +154,7 @@ function Works() {
                       className="inline-block"
                     />
                     Case Study
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -311,12 +312,12 @@ function Banner() {
               <span className="font-medium">That Users Love?</span>
             </h2>
 
-            <a
+            <Link
               href="#get-in-touch"
               className="bg-white text-black text-[16px] font-medium rounded-[24px] px-[24px] py-2 hover:scale-105 transition-transform"
             >
               Start Your Project
-            </a>
+            </Link>
           </div>
         </Container>
       </div>
@@ -435,27 +436,27 @@ function Footer() {
 
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contacts</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contacts</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>
@@ -498,7 +499,7 @@ export default function Page() {
       <section className="border-0 pt-[100px] sm:pt-[110px] md:pt-[120px] pb-12 md:pb-16">
         <Container>
           <nav className="text-neutral-500 text-[13px] mb-6 sm:mb-8">
-            <a href="/" className="hover:text-black">Home</a>
+            <Link href="/" className="hover:text-black">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-black">Mobile App Development</span>
           </nav>

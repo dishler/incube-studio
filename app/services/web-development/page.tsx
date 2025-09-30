@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Container from '../../components/Container'; // ← перевір шлях
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 /* ===================== Основна сторінка ===================== */
 export default function Page() {
@@ -15,7 +16,7 @@ export default function Page() {
           <Container>
             {/* Breadcrumbs */}
             <nav className="text-neutral-500 text-[13px] mb-6 sm:mb-8">
-              <a href="/" className="hover:text-black">Home</a>
+              <Link href="/" className="hover:text-black">Home</Link>
               <span className="mx-2">/</span>
               <span className="text-black">Web Development</span>
             </nav>
@@ -206,13 +207,13 @@ function Works() {
                 <p className="text-[16px] text-neutral-700 mb-6 leading-relaxed">{work.desc}</p>
 
                 <div className="mt-auto">
-                  <a
+                  <Link
                     href={work.href}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-black text-[16px] font-medium text-black h-[48px] px-[20px] transition-transform duration-300 hover:scale-105"
                   >
-                    <img src="/web-development/incube-logo.svg" alt="Incube Logo" width={20} height={20} />
+                    <Image src="/web-development/incube-logo.svg" alt="Incube Logo" width={20} height={20} />
                     Case Study
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
@@ -362,12 +363,12 @@ function Banner() {
               <span className="font-medium">Together</span>
             </h2>
 
-            <a
+            <Link
               href="#get-in-touch"
               className="bg-white text-black text-[16px] font-medium rounded-[24px] px-[24px] py-2 hover:scale-105 transition-transform"
             >
               Start Your Project
-            </a>
+            </Link>
           </div>
         </Container>
       </div>
@@ -472,7 +473,7 @@ function Footer() {
     <footer className="border-t border-neutral-200 bg-black text-white pt-[80px] pb-[80px]">
       <Container>
         <p className="mb-12 text-neutral-400">
-          Whether you want to make a new project or talk about high performance engineering, we're ready to talk!
+          Whether you want to make a new project or talk about high performance engineering, we`re ready to talk!
         </p>
 
         <div className="grid md:grid-cols-4 gap-12">
@@ -487,19 +488,19 @@ function Footer() {
           {/* Email */}
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           {/* Main Menu */}
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contact Us</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -507,9 +508,9 @@ function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>

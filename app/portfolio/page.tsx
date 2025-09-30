@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Container from "../components/Container";
+import Image from "next/image";
 
 /* ===================== Projects ===================== */
 function Projects() {
@@ -48,7 +49,7 @@ function Projects() {
             >
               {/* Image */}
               <Link href={p.link} className="block">
-                <img
+                <Image
                   src={p.image}
                   alt={p.title}
                   className="w-full h-auto rounded-lg object-cover transition hover:scale-[1.01]"
@@ -79,7 +80,7 @@ function Projects() {
                     href={p.link}
                     className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-6 py-3 text-[16px] font-medium text-black transition hover:scale-105 cursor-pointer"
                   >
-                    <img
+                    <Image
                       src="/logo.png"
                       alt="InCube Logo"
                       className="w-5 h-5 object-contain"
@@ -198,7 +199,7 @@ function Footer() {
     <footer className="border-t border-neutral-200 bg-black text-white pt-[80px] pb-[80px]">
       <Container>
         <p className="mb-12 text-neutral-400">
-          Whether you want to make a new project or talk about high performance engineering, we're ready to talk!
+          Whether you want to make a new project or talk about high performance engineering, we`re ready to talk!
         </p>
 
         <div className="grid md:grid-cols-4 gap-12">
@@ -213,19 +214,19 @@ function Footer() {
           {/* Email */}
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <a href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
+            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">
               info@incube.studio
-            </a>
+            </Link>
           </div>
 
           {/* Main Menu */}
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/portfolio" className="hover:text-white">Portfolio</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/contacts" className="hover:text-white">Contact Us</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -233,9 +234,9 @@ function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><a href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</a></li>
-              <li><a href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a></li>
+              <li><Link href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>
