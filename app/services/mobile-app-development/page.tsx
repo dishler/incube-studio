@@ -1,8 +1,8 @@
-"use client";
+"use client"; 
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Container from "../../components/Container"; // ← змінюй шлях за потреби
+import Container from "../../components/Container"; // ← за потреби змінити
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -27,29 +27,25 @@ function WhatWeBuild() {
             <button
               onClick={() => setOpenIndex(open ? null : index)}
               className="w-full flex justify-between items-center text-left cursor-pointer group"
+              aria-expanded={open}
+              aria-controls={`wwb-item-${index}`}
             >
               <span className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-snug">
                 {it.q}
               </span>
 
-              <span
-                className={`relative w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                  open ? "rotate-180" : "rotate-0"
-                }`}
-              >
-                <span className="absolute w-[16px] h-[2px] bg-black rounded-full" />
+              {/* фіксований розмір іконки, не тягнеться від шрифтів */}
+              <span className="relative w-6 h-6 flex-shrink-0" aria-hidden="true">
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[16px] h-[2px] bg-black rounded-full" />
                 <span
-                  className={`absolute h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
-                    open ? "scale-0" : "scale-100"
-                  }`}
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${open ? "scale-0" : "scale-100"}`}
                 />
               </span>
             </button>
 
             <div
-              className={`transition-all duration-500 ease-in-out transform origin-top overflow-hidden ${
-                open ? "max-h-40 opacity-100 scale-y-100 mt-4" : "max-h-0 opacity-0 scale-y-95"
-              }`}
+              id={`wwb-item-${index}`}
+              className={`transition-all duration-500 ease-in-out transform origin-top overflow-hidden ${open ? "max-h-40 opacity-100 scale-y-100 mt-4" : "max-h-0 opacity-0 scale-y-95"}`}
             >
               <p className="text-[16px] text-neutral-600 leading-relaxed">{it.a}</p>
             </div>
@@ -73,6 +69,7 @@ function WhatWeDo() {
               width={614}
               height={354}
               className="rounded-xl w-full h-auto max-w-[614px]"
+              priority
             />
           </div>
           <div className="min-w-0">
@@ -134,7 +131,8 @@ function Works() {
                   alt={work.title}
                   fill
                   className="object-cover rounded-[10px] transition-transform duration-500 ease-out group-hover:scale-105"
-                  priority
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  priority={idx === 0}
                 />
               </div>
 
@@ -224,9 +222,7 @@ function FixAndBetter() {
                 {solutions.map((s, i) => (
                   <li
                     key={i}
-                    className={`flex gap-3 text-[14px] leading-[150%] transition-all duration-500 ease-out ${
-                      visibleIndexes.includes(i) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-                    }`}
+                    className={`flex gap-3 text-[14px] leading-[150%] transition-all duration-500 ease-out ${visibleIndexes.includes(i) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
                   >
                     <span className="text-white text-lg">＋</span>
                     <span>{s}</span>
@@ -288,19 +284,20 @@ function Banner() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
       <div className="h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
+        {/* Приховано на мобільних, показано від sm і вище */}
         <Image
           src="/mobile-development/arrow-left.png"
           alt="Arrow Left"
           width={220}
           height={224}
-          className="absolute bottom-0 left-0"
+          className="hidden sm:block absolute bottom-0 left-0"
         />
         <Image
           src="/mobile-development/arrow-right.png"
           alt="Arrow Right"
           width={220}
           height={224}
-          className="absolute top-0 right-0"
+          className="hidden sm:block absolute top-0 right-0"
         />
 
         <Container>
@@ -454,9 +451,9 @@ function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
             <ul className="space-y-2 text-neutral-400">
-              <li><Link href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</Link></li>
-              <li><Link href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</Link></li>
-              <li><Link href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</Link></li>
+              <li><Link href="https://clutch.co" target="_blank" rel="noopener noreferrer" className="hover:text-white">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</Link></li>
             </ul>
           </div>
         </div>
@@ -495,7 +492,7 @@ function ScrollToTopButton() {
 export default function Page() {
   return (
     <main className="bg-white text-black min-h-screen">
-      {/* Хедер секції: Breadcrumbs & Title */}
+      {/* Header секції: від контейнера горизонтальні відступи 20/80/120 */}
       <section className="border-0 pt-[100px] sm:pt-[110px] md:pt-[120px] pb-12 md:pb-16">
         <Container>
           <nav className="text-neutral-500 text-[13px] mb-6 sm:mb-8">

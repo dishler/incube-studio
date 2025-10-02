@@ -25,7 +25,7 @@ function AboutHero() {
       <Container>
         <div className="pt-[100px] md:pt-[120px] lg:pt-[140px] pb-12 md:pb-[72px] grid items-center gap-10 md:grid-cols-2">
           {/* Ліва частина — текст */}
-          <h1 className="font-['Plus_Jakarta_Sans'] leading-none text-[48px] sm:text-[64px] md:text-[80px]">
+          <h1 className="font-['Plus_Jakarta_Sans'] leading-none text-black text-[48px] sm:text-[64px] md:text-[80px]">
             <span className="font-semibold">About</span>{" "}
             <span className="italic font-extralight">us</span>
           </h1>
@@ -49,62 +49,40 @@ function AboutHero() {
 
 /* === SECTION: About – Stats & Pitch === */
 function AboutStatsPitch() {
-  // Outline для цифр (stroke)
   const outlineNumStyle: CSSProperties = { WebkitTextStroke: "2px #111" };
 
   return (
     <section className="bg-white">
       <Container>
-        {/* Верхній рядок: about us + лінія */}
+        {/* Верхній рядок */}
         <div className="py-4 border-b border-neutral-300">
-          <span className="text-[14px] sm:text-[16px] text-neutral-700">about us</span>
+          <span className="text-[14px] sm:text-[16px] text-black">about us</span>
         </div>
 
-        {/* Контент: зліва цифри, справа заголовок + опис */}
+        {/* Контент */}
         <div className="pt-10 md:pt-12 grid gap-12 lg:gap-20 md:grid-cols-[320px_minmax(0,1fr)]">
           {/* LEFT: stats */}
           <div className="space-y-12 md:space-y-16">
-            {/* 1 */}
-            <div>
-              <div
-                className="select-none leading-none text-transparent font-semibold text-[96px] sm:text-[120px] md:text-[140px]"
-                style={outlineNumStyle}
-              >
-                10
+            {[
+              { num: "10", label: "Awesome clients" },
+              { num: "15", label: "Created projects" },
+              { num: "8", label: "Specialists" },
+            ].map((s) => (
+              <div key={s.num}>
+                <div
+                  className="select-none leading-none text-transparent font-semibold text-[96px] sm:text-[120px] md:text-[140px]"
+                  style={outlineNumStyle}
+                >
+                  {s.num}
+                </div>
+                <div className="mt-3 text-[18px] sm:text-[20px] font-semibold text-black">
+                  {s.label}
+                </div>
               </div>
-              <div className="mt-3 text-[18px] sm:text-[20px] font-semibold text-neutral-900">
-                Awesome clients
-              </div>
-            </div>
-
-            {/* 2 */}
-            <div>
-              <div
-                className="select-none leading-none text-transparent font-semibold text-[96px] sm:text-[120px] md:text-[140px]"
-                style={outlineNumStyle}
-              >
-                15
-              </div>
-              <div className="mt-3 text-[18px] sm:text-[20px] font-semibold text-neutral-900">
-                Created projects
-              </div>
-            </div>
-
-            {/* 3 */}
-            <div>
-              <div
-                className="select-none leading-none text-transparent font-semibold text-[96px] sm:text-[120px] md:text-[140px]"
-                style={outlineNumStyle}
-              >
-                8
-              </div>
-              <div className="mt-3 text-[18px] sm:text-[20px] font-semibold text-neutral-900">
-                Specialists
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* RIGHT: heading + copy */}
+          {/* RIGHT */}
           <div className="flex flex-col">
             <h2 className="font-['Plus_Jakarta_Sans'] text-black leading-[1.05] text-[40px] sm:text-[54px] md:text-[64px] lg:text-[74px]">
               <span className="font-medium">
@@ -120,8 +98,7 @@ function AboutStatsPitch() {
               </span>
             </h2>
 
-            {/* опис */}
-            <div className="mt-6 sm:mt-8 max-w-[720px] text-[16px] text-neutral-700 leading-[1.8] pl-0 sm:pl-8 md:pl-[54px]">
+            <div className="mt-6 sm:mt-8 max-w-[720px] text-[16px] text-black leading-[1.8] pl-0 sm:pl-8 md:pl-[54px]">
               <p>We create impactful digital experiences that elevate your brand.</p>
               <p className="mt-5">
                 Our team combines expertise and agility to deliver exceptional designs and web
@@ -165,7 +142,7 @@ function Founders() {
   return (
     <section id="founders" className="border-t border-neutral-200 py-20 bg-white">
       <Container>
-        <h2 className="text-[40px] sm:text-[50px] md:text-[60px] mb-12">
+        <h2 className="text-[40px] sm:text-[50px] md:text-[60px] mb-12 text-black">
           <span className="font-light italic mr-3">Meet our creative</span>
           <span className="font-medium">staff</span>
         </h2>
@@ -183,12 +160,14 @@ function Founders() {
               <Image
                 src={f.image}
                 alt={f.name}
+                width={600}
+                height={600}
                 className="w-full h-auto object-cover rounded-lg
                            transition-transform duration-500 ease-out will-change-transform
                            group-hover:scale-105"
               />
               <p className="mt-4 text-[20px] font-semibold text-black">{f.name}</p>
-              <p className="text-[14px] text-[#83838A]">/ {f.role}</p>
+              <p className="text-[14px] text-black/70">/ {f.role}</p>
             </div>
           ))}
         </div>
@@ -205,16 +184,16 @@ function GetInTouch() {
         <div className="grid md:grid-cols-2 gap-16">
           {/* Ліва колонка */}
           <div>
-            <h2 className="text-[48px] sm:text-[64px] md:text-[80px] leading-tight font-semibold font-['Plus_Jakarta_Sans']">
+            <h2 className="text-[48px] sm:text-[64px] md:text-[80px] leading-tight font-semibold text-black font-['Plus_Jakarta_Sans']">
               Let’s <span className="italic font-extralight">talk</span>
             </h2>
-            <p className="mt-6 text-[16px] font-normal text-neutral-600 leading-relaxed">
+            <p className="mt-6 text-[16px] font-normal text-black leading-relaxed">
               Whether you’re looking to start a new project or discuss
               high-performance engineering, we’re prepared to chat!
             </p>
           </div>
 
-          {/* Права колонка — форма */}
+          {/* Форма */}
           <form
             action="https://formspree.io/f/mpwjkrpd"
             method="POST"
@@ -222,9 +201,8 @@ function GetInTouch() {
             rel="noopener noreferrer"
             className="space-y-6"
           >
-            {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-neutral-700">
+              <label htmlFor="name" className="block text-sm font-medium text-black">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -232,13 +210,12 @@ function GetInTouch() {
                 name="name"
                 type="text"
                 required
-                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-neutral-900 focus:outline-none focus:border-black"
+                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-black focus:outline-none focus:border-black"
               />
             </div>
 
-            {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-neutral-700">
+              <label htmlFor="email" className="block text-sm font-medium text-black">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -246,24 +223,22 @@ function GetInTouch() {
                 name="email"
                 type="email"
                 required
-                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-neutral-900 focus:outline-none focus:border-black"
+                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-black focus:outline-none focus:border-black"
               />
             </div>
 
-            {/* Message */}
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-neutral-700">
+              <label htmlFor="message" className="block text-sm font-medium text-black">
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-neutral-900 focus:outline-none focus:border-black"
+                className="mt-2 block w-full border-b border-neutral-400 bg-transparent py-2 text-black focus:outline-none focus:border-black"
               />
             </div>
 
-            {/* Checkbox */}
             <div className="flex items-start gap-3">
               <input
                 id="privacy"
@@ -271,13 +246,12 @@ function GetInTouch() {
                 required
                 className="mt-1.5 h-6 w-6 border border-neutral-400 rounded-sm text-black focus:ring-black"
               />
-              <label htmlFor="privacy" className="text-[16px] font-light text-neutral-700 leading-relaxed">
+              <label htmlFor="privacy" className="text-[16px] font-light text-black leading-relaxed">
                 I consent to InCube Studio Privacy Policy and having this website
                 store my submitted information so they can respond to
               </label>
             </div>
 
-            {/* Button */}
             <div>
               <button
                 type="submit"
@@ -298,7 +272,7 @@ function Footer() {
   return (
     <footer className="border-t border-neutral-200 bg-black text-white py-16">
       <Container>
-        <p className="mb-12 text-neutral-400 max-w-3xl">
+        <p className="mb-12 text-white max-w-3xl">
           Whether you want to make a new project or talk about high performance engineering, we’re
           ready to talk!
         </p>
@@ -306,7 +280,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-12">
           <div>
             <h4 className="text-lg font-medium mb-4">Address</h4>
-            <p className="text-neutral-400">
+            <p className="text-white">
               Lviv, Lviv oblast
               <br />
               Ukraine
@@ -315,32 +289,32 @@ function Footer() {
 
           <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
-            <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white transition">
+            <Link href="mailto:info@incube.studio" className="text-white hover:opacity-80">
               info@incube.studio
             </Link>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Main menu</h4>
-            <ul className="space-y-2 text-neutral-400">
-              <li><Link href="/" className="hover:text-white">Home</Link></li>
-              <li><Link href="/portfolio" className="hover:text-white">Portfolio</Link></li>
-              <li><Link href="/about" className="hover:text-white">About Us</Link></li>
-              <li><Link href="/contacts" className="hover:text-white">Contacts</Link></li>
+            <ul className="space-y-2 text-white">
+              <li><Link href="/" className="hover:opacity-80">Home</Link></li>
+              <li><Link href="/portfolio" className="hover:opacity-80">Portfolio</Link></li>
+              <li><Link href="/about" className="hover:opacity-80">About Us</Link></li>
+              <li><Link href="/contacts" className="hover:opacity-80">Contacts</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-medium mb-4">Social</h4>
-            <ul className="space-y-2 text-neutral-400">
-              <li><Link href="https://clutch.co" target="_blank" className="hover:text-white">Clutch</Link></li>
-              <li><Link href="https://upwork.com" target="_blank" className="hover:text-white">Upwork</Link></li>
-              <li><Link href="https://linkedin.com" target="_blank" className="hover:text-white">LinkedIn</Link></li>
+            <ul className="space-y-2 text-white">
+              <li><Link href="https://clutch.co" target="_blank" className="hover:opacity-80">Clutch</Link></li>
+              <li><Link href="https://upwork.com" target="_blank" className="hover:opacity-80">Upwork</Link></li>
+              <li><Link href="https://linkedin.com" target="_blank" className="hover:opacity-80">LinkedIn</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-neutral-800 pt-6 text-sm text-neutral-500">
+        <div className="mt-12 border-t border-neutral-800 pt-6 text-sm text-white/80">
           © {new Date().getFullYear()} InCube Studio. All rights reserved.
         </div>
       </Container>
@@ -348,7 +322,7 @@ function Footer() {
   );
 }
 
-/* ===================== Floating Button (Scroll To Top) ===================== */
+/* ===================== Floating Button ===================== */
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
 
@@ -358,12 +332,10 @@ function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   return (
     <button
       aria-label="Scroll to top"
-      onClick={scrollToTop}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className={`fixed bottom-10 right-10 z-50 flex items-center justify-center
                   w-14 h-14 rounded-full border border-black bg-white text-black
                   shadow-md cursor-pointer transition-all duration-300

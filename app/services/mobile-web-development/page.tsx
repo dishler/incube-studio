@@ -96,15 +96,11 @@ function WhatWeBuild() {
                         {it.q}
                       </span>
 
-                      {/* Плюс/мінус */}
-                      <span
-                        className={`ml-6 relative w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                          open ? 'rotate-180' : 'rotate-0'
-                        }`}
-                      >
-                        <span className="absolute w-[16px] h-[2px] bg-black rounded-full" />
+                      {/* Плюс/мінус з фіксованим розміром (не деформується) */}
+                      <span className="ml-6 relative w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[16px] h-[2px] bg-black rounded-full" />
                         <span
-                          className={`absolute h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
+                          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
                             open ? 'scale-0' : 'scale-100'
                           }`}
                         />
@@ -295,16 +291,34 @@ function Process() {
   );
 }
 
-/* ===================== Banner Section (full-bleed) ===================== */
+/* ===================== Banner Section (desktop icons, hidden on mobile) ===================== */
 function Banner() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      <div className="h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
-        <Image src="/web-development/arrow-left.png" alt="Arrow Left" width={220} height={224} className="absolute bottom-0 left-0" />
-        <Image src="/web-development/arrow-right.png" alt="Arrow Right" width={220} height={224} className="absolute top-0 right-0" />
+      <div className="relative h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
+        {/* Ліва іконка — тільки з md і вище */}
+        <Image
+          src="/mobile-web-development/arrow-left.png"
+          alt=""
+          width={220}
+          height={224}
+          aria-hidden="true"
+          className="hidden md:block absolute bottom-0 left-0 pointer-events-none select-none"
+          priority
+        />
+        {/* Права іконка — тільки з md і вище */}
+        <Image
+          src="/mobile-web-development/arrow-right.png"
+          alt=""
+          width={220}
+          height={224}
+          aria-hidden="true"
+          className="hidden md:block absolute top-0 right-0 pointer-events-none select-none"
+          priority
+        />
 
         <Container>
-          <div className="flex flex-col items-center justify-center">
+          <div className="relative z-10 flex flex-col items-center justify-center">
             <h2 className="text-[40px] sm:text-[52px] md:text-[60px] leading-tight mb-6">
               <span className="font-medium">Your Users Are Mobile.</span>
               <br />
@@ -322,6 +336,8 @@ function Banner() {
     </section>
   );
 }
+
+
 
 /* ===================== Get In Touch ===================== */
 function GetInTouch() {
@@ -421,7 +437,7 @@ function Footer() {
             <p className="text-neutral-400">Lviv, Lviv oblast<br />Ukraine</p>
           </div>
 
-        <div>
+          <div>
             <h4 className="text-lg font-medium mb-4">Email</h4>
             <Link href="mailto:info@incube.studio" className="text-neutral-400 hover:text-white">info@incube.studio</Link>
           </div>

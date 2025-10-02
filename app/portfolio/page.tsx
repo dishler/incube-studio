@@ -15,6 +15,8 @@ function Projects() {
       tags: ["iOS App", "Landing page"],
       image: "/sonum.png",
       link: "/case-studies/sonum",
+      w: 1200,
+      h: 800,
     },
     {
       title: "BlockShare – Smart Tracker for Crypto and DeFi",
@@ -23,6 +25,8 @@ function Projects() {
       tags: ["Platform", "Website", "Crypto"],
       image: "/blockshare.png",
       link: "/case-studies/blockshare",
+      w: 1200,
+      h: 800,
     },
     {
       title: "Apex – The Building Code App",
@@ -31,6 +35,8 @@ function Projects() {
       tags: ["iOS App", "Android App", "Web App"],
       image: "/apex.png",
       link: "/case-studies/apex",
+      w: 1200,
+      h: 800,
     },
   ];
 
@@ -52,7 +58,10 @@ function Projects() {
                 <Image
                   src={p.image}
                   alt={p.title}
+                  width={p.w}
+                  height={p.h}
                   className="w-full h-auto rounded-lg object-cover transition hover:scale-[1.01]"
+                  priority={i === 0}
                 />
               </Link>
 
@@ -83,7 +92,9 @@ function Projects() {
                     <Image
                       src="/logo.png"
                       alt="InCube Logo"
-                      className="w-5 h-5 object-contain"
+                      width={20}
+                      height={20}
+                      className="object-contain"
                     />
                     Case Study
                   </Link>

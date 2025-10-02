@@ -44,7 +44,7 @@ export default function Page() {
         <Process />
       </main>
 
-      {/* Banner (full-bleed, але контент всередині Container) */}
+      {/* Banner (іконки прибрано) */}
       <Banner />
 
       {/* Form */}
@@ -80,19 +80,17 @@ function FAQ() {
             <button
               onClick={() => setOpenIndex(open ? null : index)}
               className="w-full flex justify-between items-center text-left cursor-pointer group"
+              aria-expanded={open}
+              aria-controls={`faq-item-${index}`}
             >
               <span className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-snug">
                 {it.q}
               </span>
 
-              <span
-                className={`ml-6 relative w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                  open ? 'rotate-180' : 'rotate-0'
-                }`}
-              >
-                <span className="absolute w-[16px] h-[2px] bg-black rounded-full transition-all duration-300" />
+              <span className="ml-6 relative w-6 h-6 flex-shrink-0" aria-hidden="true">
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[16px] h-[2px] bg-black rounded-full transition-all duration-300" />
                 <span
-                  className={`absolute h-[16px] w-[2px] bg-black rounded-full transition-all duration-300 ${
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[16px] w-[2px] bg-black rounded-full transition-all duration-300 ${
                     open ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
                   }`}
                 />
@@ -100,6 +98,7 @@ function FAQ() {
             </button>
 
             <div
+              id={`faq-item-${index}`}
               className={`transition-all duration-500 ease-in-out transform origin-top overflow-hidden ${
                 open ? 'max-h-40 opacity-100 scale-y-100 mt-4' : 'max-h-0 opacity-0 scale-y-95'
               }`}
@@ -331,30 +330,34 @@ function Process() {
   );
 }
 
-/* ===================== Banner Section ===================== */
+/* ===================== Banner Section (Web Development) ===================== */
 function Banner() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      <div className="h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
-        {/* Ліва іконка */}
+      <div className="relative h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
+        {/* Ліва іконка (видна з md і вище) */}
         <Image
           src="/web-development/arrow-left.png"
-          alt="Arrow Left"
+          alt=""
           width={220}
           height={224}
-          className="absolute bottom-0 left-0"
+          aria-hidden="true"
+          className="hidden md:block absolute bottom-0 left-0 pointer-events-none select-none"
+          priority
         />
-        {/* Права іконка */}
+        {/* Права іконка (видна з md і вище) */}
         <Image
           src="/web-development/arrow-right.png"
-          alt="Arrow Right"
+          alt=""
           width={220}
           height={224}
-          className="absolute top-0 right-0"
+          aria-hidden="true"
+          className="hidden md:block absolute top-0 right-0 pointer-events-none select-none"
+          priority
         />
 
         <Container>
-          <div className="flex flex-col items-center justify-center">
+          <div className="relative z-10 flex flex-col items-center justify-center">
             <h2 className="text-[40px] sm:text-[52px] md:text-[60px] leading-tight mb-6">
               <span className="font-medium">Let’s Build </span>
               <span className="italic">Something</span>
@@ -362,7 +365,6 @@ function Banner() {
               <span className="italic">Great </span>
               <span className="font-medium">Together</span>
             </h2>
-
             <Link
               href="#get-in-touch"
               className="bg-white text-black text-[16px] font-medium rounded-[24px] px-[24px] py-2 hover:scale-105 transition-transform"
@@ -375,6 +377,8 @@ function Banner() {
     </section>
   );
 }
+
+
 
 /* ===================== Get In Touch ===================== */
 function GetInTouch() {

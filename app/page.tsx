@@ -23,7 +23,10 @@ export default function Home() {
 /* ===================== Hero ===================== */
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center bg-white text-black border-b border-neutral-200">
+    <section
+      id="hero"
+      className="relative flex min-h-screen items-center bg-white text-black border-b border-neutral-200"
+    >
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
           {/* Ліва колонка */}
@@ -126,12 +129,15 @@ function Team() {
     <section id="team" className="border-t border-neutral-200 py-20 bg-white">
       <Container>
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Ліва колонка — картинка */}
-          <div className="overflow-hidden rounded-lg">
+          {/* Ліва колонка — картинка (без обрізання, без фіксованої висоти) */}
+          <div className="rounded-lg">
             <Image
               src="/team.png"
               alt="The Team"
-              className="w-full h-auto rounded-lg object-cover transition-transform duration-500 hover:scale-105"
+              width={1600}
+              height={900}
+              className="w-full h-auto object-contain rounded-lg transition-transform duration-500 hover:scale-105 will-change-transform"
+              priority
             />
           </div>
 
@@ -161,7 +167,9 @@ function Team() {
                 <Image
                   src="/arrow-down-right.svg"
                   alt="Arrow Down"
-                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
+                  width={20}
+                  height={20}
+                  className="transition-transform duration-300 group-hover:translate-y-1"
                 />
               </Link>
             </div>
@@ -182,6 +190,7 @@ function Projects() {
       tags: ["iOS App", "Landing page"],
       image: "/sonum.png",
       link: "/case-studies/sonum",
+      w: 1200, h: 800,
     },
     {
       title: "BlockShare – Smart Tracker for Crypto and DeFi",
@@ -190,6 +199,7 @@ function Projects() {
       tags: ["Platform", "Website", "Crypto"],
       image: "/blockshare.png",
       link: "/case-studies/blockshare",
+      w: 1200, h: 800,
     },
     {
       title: "Apex – The Building Code App",
@@ -198,6 +208,7 @@ function Projects() {
       tags: ["iOS App", "Android App", "Web App"],
       image: "/apex.png",
       link: "/case-studies/apex",
+      w: 1200, h: 800,
     },
   ];
 
@@ -216,6 +227,8 @@ function Projects() {
                 <Image
                   src={p.image}
                   alt={p.title}
+                  width={p.w}
+                  height={p.h}
                   className="w-full h-auto rounded-lg object-cover hover:scale-[1.01] transition"
                 />
               </Link>
@@ -237,7 +250,13 @@ function Projects() {
                     href={p.link}
                     className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-6 py-3 text-[16px] font-medium text-black transition hover:scale-105 cursor-pointer"
                   >
-                    <Image src="/logo.png" alt="InCube Logo" className="w-5 h-5 object-contain" />
+                    <Image
+                      src="/logo.png"
+                      alt="InCube Logo"
+                      width={20}
+                      height={20}
+                      className="object-contain"
+                    />
                     Case Study
                   </Link>
                 </div>
@@ -293,6 +312,8 @@ function Founders() {
               <Image
                 src={f.image}
                 alt={f.name}
+                width={1200}
+                height={800}
                 className="w-full h-auto object-cover rounded-lg
                            transition-transform duration-500 ease-out will-change-transform
                            group-hover:scale-105"
@@ -339,28 +360,26 @@ function FAQ() {
                     <button
                       onClick={() => setOpenIndex(open ? null : index)}
                       className="w-full flex justify-between items-center text-left cursor-pointer group"
+                      aria-expanded={open}
+                      aria-controls={`faq-item-${index}`}
                     >
                       <span className="text-[28px] sm:text-[32px] leading-[150%]">
                         {it.q}
                       </span>
 
-                      {/* Іконка – обертання при відкритті */}
-                      <span
-                        className={`relative w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                          open ? "rotate-180" : "rotate-0"
-                        }`}
-                      >
-                        <span className="absolute w-full h-[2px] bg-black rounded-full transition-all duration-300" />
+                      {/* Фіксована іконка +/− як на сервісах */}
+                      <span className="relative w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[16px] h-[2px] bg-black rounded-full" />
                         <span
-                          className={`absolute h-full w-[2px] bg-black rounded-full transition-all duration-300 ${
+                          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
                             open ? "scale-0" : "scale-100"
                           }`}
                         />
                       </span>
                     </button>
 
-                    {/* Контент з анімацією появи */}
                     <div
+                      id={`faq-item-${index}`}
                       className={`transition-all duration-500 ease-in-out transform origin-top ${
                         open
                           ? "max-h-40 opacity-100 scale-y-100 mt-4"
@@ -390,8 +409,9 @@ function FAQ() {
               performance engineering, we’re ready to talk!
             </p>
 
+            {/* Перехід на окрему сторінку Contact Us */}
             <Link
-              href="#contact"
+              href="/contact"
               className="mt-6 inline-flex items-center justify-center rounded-full border border-black text-[16px] font-medium text-black hover:scale-105 transition cursor-pointer"
               style={{ padding: "14px 24px", width: "auto" }}
             >
@@ -429,7 +449,6 @@ function GetInTouch() {
             rel="noopener noreferrer"
             className="space-y-6"
           >
-            {/* поля форми без змін */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-neutral-700">
                 Name <span className="text-red-500">*</span>
@@ -496,7 +515,6 @@ function GetInTouch() {
   );
 }
 
-
 /* ===================== Footer ===================== */
 function Footer() {
   return (
@@ -544,7 +562,6 @@ function Footer() {
     </footer>
   );
 }
-
 
 /* ===================== Floating Button (Scroll To Top) ===================== */
 function ScrollToTopButton() {

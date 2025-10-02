@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Container from '../../components/Container'; // ← підкоригуй шлях, якщо інший
+import Container from '../../components/Container';
 import Link from 'next/link';
 
 /* ===================== Основна сторінка ===================== */
@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <main className="bg-white text-black min-h-screen">
         {/* ===================== Breadcrumbs + Title ===================== */}
-        <section className="pt-[100px] sm:pt-[110px] md:pt-[120px] pb-12 md:pb-16">
+        <section className="pt-[100px] sm:pt-[110px] md:pt-[120px] pb-12 md:pb-16 border-0">
           <Container>
             <nav className="text-neutral-500 text-[13px] mb-6 sm:mb-8">
               <Link href="/" className="hover:text-black">Home</Link>
@@ -93,19 +93,18 @@ function WhatWeBuild() {
                     <button
                       onClick={() => setOpenIndex(open ? null : index)}
                       className="w-full flex justify-between items-center text-left cursor-pointer group"
+                      aria-expanded={open}
+                      aria-controls={`mvp-wwb-${index}`}
                     >
                       <span className="text-[28px] sm:text-[34px] md:text-[38px] font-normal leading-snug">
                         {it.q}
                       </span>
 
-                      <span
-                        className={`ml-6 relative w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                          open ? 'rotate-180' : 'rotate-0'
-                        }`}
-                      >
-                        <span className="absolute w-[16px] h-[2px] bg-black rounded-full" />
+                      {/* Фіксована іконка +/− (не деформується) */}
+                      <span className="ml-6 relative w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[16px] h-[2px] bg-black rounded-full" />
                         <span
-                          className={`absolute h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
+                          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[16px] w-[2px] bg-black rounded-full transition-transform duration-300 ${
                             open ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
                           }`}
                         />
@@ -113,6 +112,7 @@ function WhatWeBuild() {
                     </button>
 
                     <div
+                      id={`mvp-wwb-${index}`}
                       className={`transition-all duration-500 ease-in-out transform origin-top overflow-hidden ${
                         open ? 'max-h-40 opacity-100 scale-y-100 mt-4' : 'max-h-0 opacity-0 scale-y-95'
                       }`}
@@ -178,7 +178,7 @@ function Works() {
                   src={work.img}
                   alt={work.title}
                   fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover rounded-[10px] transition-transform duration-500 ease-out group-hover:scale-105"
                   priority
                 />
@@ -313,15 +313,33 @@ function Process() {
   );
 }
 
-/* ===================== Banner Section (full-bleed) ===================== */
+/* ===================== Banner Section (desktop icons, hidden on mobile) ===================== */
 function Banner() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      <div className="h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
-        <Image src="/web-development/arrow-left.png" alt="Arrow Left" width={220} height={224} className="absolute bottom-0 left-0" />
-        <Image src="/web-development/arrow-right.png" alt="Arrow Right" width={220} height={224} className="absolute top-0 right-0" />
+      <div className="relative h-[340px] sm:h-[380px] md:h-[434px] flex items-center justify-center text-center">
+        {/* Ліва іконка — відображається тільки на md+ */}
+        <Image
+          src="/web-development/arrow-left.png"
+          alt="Left Icon"
+          width={220}
+          height={224}
+          className="hidden md:block absolute bottom-0 left-0 pointer-events-none select-none"
+          priority
+        />
+
+        {/* Права іконка — відображається тільки на md+ */}
+        <Image
+          src="/web-development/arrow-right.png"
+          alt="Right Icon"
+          width={220}
+          height={224}
+          className="hidden md:block absolute top-0 right-0 pointer-events-none select-none"
+          priority
+        />
+
         <Container>
-          <div className="flex flex-col items-center justify-center">
+          <div className="relative z-10 flex flex-col items-center justify-center">
             <h2 className="text-[40px] sm:text-[52px] md:text-[60px] leading-tight mb-6">
               <span className="font-medium">Ready to </span>
               <span className="italic">Validate</span>
@@ -341,6 +359,8 @@ function Banner() {
     </section>
   );
 }
+
+
 
 /* ===================== Get In Touch ===================== */
 function GetInTouch() {

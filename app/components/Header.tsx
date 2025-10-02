@@ -59,7 +59,14 @@ export default function Header() {
         <div className="relative grid grid-cols-[auto_1fr_auto] items-center py-6">
           {/* Logo */}
           <Link href="/#hero" className="justify-self-start cursor-pointer">
-            <Image src="/logo.png" alt="Logo" className="h-10 w-auto" />
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop menu */}
@@ -98,7 +105,9 @@ export default function Header() {
                   >
                     Services
                     <svg
-                      className={`h-4 w-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`}
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        isServicesOpen ? "rotate-180" : ""
+                      }`}
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
